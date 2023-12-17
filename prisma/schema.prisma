@@ -17,6 +17,7 @@ model User {
   address     String
   email       String        @unique
   phone       String
+  password    String
   products    Product[]
   Transaction Transaction[]
   Rental      Rental[]
