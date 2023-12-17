@@ -8,5 +8,5 @@ dotevn.config({
 export default {
     port: process.env.PORT,
     NODE_ENV: process.env.NODE_ENV,
-    database_url: process.env.DATABASE_URL
+    DATABASE_URL: process.env.DATABASE_URL
 };
