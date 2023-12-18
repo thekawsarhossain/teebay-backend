@@ -22,8 +22,8 @@ export const typeDefs = `#graphql
         rentOption: String!
         owner: User!
         createdAt: String!
-        transactions: [Transaction]
-        rentals: [Rental]
+        transactions: [Transaction!]
+        rentals: [Rental!]
     }
 
     type Transaction {
@@ -44,11 +44,16 @@ export const typeDefs = `#graphql
 
     type Query {
         getUser(id: ID!): User
+        getAllProducts: [Product]
     }
 
     type Mutation {
         loginUser(email: String!, password: String!): User
         registerUser(user: RegisterUserInput!): User
+
+        addProduct(product: AddProductInput!): Product
+        editProduct(productId: ID!, product: EditProductInput!): Product
+        deleteProduct(productId: ID!): Product
     }
 
     input RegisterUserInput {
@@ -58,6 +63,25 @@ export const typeDefs = `#graphql
         email: String! 
         phone: String 
         password: String!
+    }
+
+    input AddProductInput {
+        title: String!
+        categories: [String!]!
+        description: String!
+        price: Float!
+        rentPrice: Float!
+        rentOption: String!
+        ownerId: ID!
+    }
+
+    input EditProductInput {
+        title: String
+        categories: [String!]
+        description: String
+        price: Float
+        rentPrice: Float
+        rentOption: String
     }
 
 `

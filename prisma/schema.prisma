@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Category {
+enum Categories {
   ELECTRONICS
   FURNITURE
   HOME_APPLIANCES
@@ -47,7 +47,7 @@ model User {
 model Product {
   id          Int           @id @default(autoincrement())
   title       String
-  category    Category[]
+  categories  Categories[]
   description String
   price       Float
   rentPrice   Float
