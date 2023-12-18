@@ -7,3 +7,8 @@ export interface IUser {
     phone: string;
     password: string;
 }
+
+export interface IUserCred {
+    email: string;
+    password: string;
+}

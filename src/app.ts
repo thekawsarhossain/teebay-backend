@@ -2,10 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import { graphqlHTTP } from 'express-graphql';
 import { makeExecutableSchema } from '@graphql-tools/schema';
-import { typeDefs } from "./graphql/typeDefs";
-import { resolvers } from "./graphql/resolvers";
-import notFound from './middlewares/notFound';
-import globalErrorHandler from './middlewares/handleGlobalError';
+import { typeDefs } from "./app/graphql/typeDefs";
+import { resolvers } from "./app/graphql/resolvers";
+import notFound from './app/middlewares/notFound';
+import globalErrorHandler from './app/middlewares/handleGlobalError';
 
 const app = express();
 app.use(cors());

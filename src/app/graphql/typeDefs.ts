@@ -42,4 +42,22 @@ export const typeDefs = `#graphql
         endTime: String!
     }
 
+    type Query {
+        getUser(id: ID!): User
+    }
+
+    type Mutation {
+        loginUser(email: String!, password: String!): User
+        registerUser(user: RegisterUserInput!): User
+    }
+
+    input RegisterUserInput {
+        firstName: String!
+        lastName: String! 
+        address: String 
+        email: String! 
+        phone: String 
+        password: String!
+    }
+
 `
