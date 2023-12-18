@@ -40,23 +40,23 @@ model User {
   phone       String
   password    String
   products    Product[]
-  Transaction Transaction[]
-  Rental      Rental[]
+  transactions Transaction[]
+  rentals      Rental[]
 }
 
 model Product {
-  id          Int           @id @default(autoincrement())
-  title       String
-  categories  Categories[]
-  description String
-  price       Float
-  rentPrice   Float
-  rentOption  RentOption
-  owner       User?         @relation(fields: [ownerId], references: [id])
-  ownerId     Int?
-  createdAt   DateTime      @default(now())
-  Transaction Transaction[]
-  Rental      Rental[]
+  id           Int           @id @default(autoincrement())
+  title        String
+  categories   Categories[]
+  description  String
+  price        Float
+  rentPrice    Float
+  rentOption   RentOption
+  owner        User?         @relation(fields: [ownerId], references: [id])
+  ownerId      Int?
+  createdAt    DateTime      @default(now())
+  transactions Transaction[]
+  rentals       Rental[]
 }
 
 model Transaction {

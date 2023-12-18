@@ -35,3 +35,35 @@ export const deleteProduct = async (productId: string) => {
 export const getAllProducts = async () => {
     return await prisma.product.findMany();
 };
+
+export const getSoldProducts = async (userId: string) => {
+    const ownedProducts = await prisma.product.findMany({
+        where: { ownerId: Number(userId) },
+        include: { transactions: true },
+    });
+
+    return ownedProducts.filter(product =>
+        product.transactions.some(transaction => transaction.type === 'PURCHASE')
+    );
+};
+
+export const getLentProducts = async (userId: string) => {
+    const ownedProducts = await prisma.product.findMany({
+        where: { ownerId: Number(userId) },
+        include: { rentals: true },
+    });
+
+    return ownedProducts.filter(product => product.rentals.length > 0);
+};
+
+export const getProductsByOwnerId = async (ownerId: string) => {
+    return await prisma.product.findMany({
+        where: { ownerId: Number(ownerId) },
+    });
+};
+
+export const getProductById = async (id: string) => {
+    return await prisma.product.findUnique({
+        where: { id: Number(id) },
+    });
+};

@@ -45,6 +45,10 @@ export const typeDefs = `#graphql
     type Query {
         getUser(id: ID!): User
         getAllProducts: [Product]
+        getBoughtProducts(userId: ID!): [Product]
+        getSoldProducts(userId: ID!): [Product]
+        getBorrowedProducts(userId: ID!): [Product]
+        getLentProducts(userId: ID!): [Product]
     }
 
     type Mutation {
@@ -54,6 +58,9 @@ export const typeDefs = `#graphql
         addProduct(product: AddProductInput!): Product
         editProduct(productId: ID!, product: EditProductInput!): Product
         deleteProduct(productId: ID!): Product
+
+        buyProduct(productId: ID!, buyerId: ID!): Transaction!
+        rentProduct(productId: ID!, renterId: ID!, startTime: String!, endTime: String!): Rental!
     }
 
     input RegisterUserInput {
@@ -83,5 +90,4 @@ export const typeDefs = `#graphql
         rentPrice: Float
         rentOption: String
     }
-
 `
