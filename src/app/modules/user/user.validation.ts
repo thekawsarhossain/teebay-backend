@@ -1,22 +1,27 @@
-import { number, object, string } from 'zod';
+import { object, string } from 'zod';
 
 export const RegistrationValidationSchema = object({
-    id: number().int().positive(),
     firstName:
         string()
-            .min(1)
-            .max(25)
+            .min(3, { message: 'First Name must be at least 3 character long' })
+            .max(25, { message: 'First Name cannot be longer than 25 characters' })
             .refine((value) => /^[A-Z]/.test(value), {
                 message: 'First Name must start with a capital letter',
             }),
-    lastName: string().min(1).max(25),
-    address: string(),
-    email: string().email(),
-    phone: string().min(11),
-    password: string().min(8),
+    lastName: string()
+        .min(3, { message: 'Last Name must be at least 3 character long' })
+        .max(25, { message: 'Last Name cannot be longer than 25 characters' }),
+    address: string({ required_error: 'Address is required' }),
+    email: string({ required_error: 'Email is required' })
+        .email({ message: 'Invalid email format' }),
+    phone: string()
+        .min(11, { message: 'Phone number must be at least 11 characters long' }),
+    password: string()
+        .min(8, { message: 'Password must be at least 8 characters long' }),
 });
 
 export const LoginValidationSchema = object({
-    email: string().email(),
-    password: string(),
+    email: string({ required_error: 'Email is required' })
+        .email({ message: 'Invalid email format' }),
+    password: string({ required_error: 'Password is required' }),
 });
