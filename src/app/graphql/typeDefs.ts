@@ -7,6 +7,9 @@ export const typeDefs = `#graphql
         email: String!
         phone: String!
         password: String!
+        products: [Product!]
+        transactions: [Transaction!]
+        rentals: [Rental!]
     }
 
     type Product {
@@ -19,6 +22,8 @@ export const typeDefs = `#graphql
         rentOption: String!
         owner: User!
         createdAt: String!
+        transactions: [Transaction]
+        rentals: [Rental]
     }
 
     type Transaction {
