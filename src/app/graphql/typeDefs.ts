@@ -44,11 +44,11 @@ export const typeDefs = `#graphql
 
     type Query {
         getUser(id: ID!): User
-        getAllProducts: [Product]
-        getBoughtProducts(userId: ID!): [Product]
-        getSoldProducts(userId: ID!): [Product]
-        getBorrowedProducts(userId: ID!): [Product]
-        getLentProducts(userId: ID!): [Product]
+        getAllProducts: [Product!]
+        getBoughtProducts(userId: ID!): [Product!]
+        getSoldProducts(userId: ID!): [Product!]
+        getBorrowedProducts(userId: ID!): [Product!]
+        getLentProducts(userId: ID!): [Product!]
     }
 
     type Mutation {

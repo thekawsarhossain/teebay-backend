@@ -35,7 +35,7 @@ export const rentProduct = async (productId: string, renterId: string, startTime
 };
 
 export const getBorrowedProducts = async (userId: string) => {
-    return await prisma.rental.findMany({
+    const rentalWithProducts = await prisma.rental.findMany({
         where: {
             renterId: Number(userId),
         },
@@ -43,6 +43,8 @@ export const getBorrowedProducts = async (userId: string) => {
             product: true,
         },
     });
+
+    return rentalWithProducts?.map((rental) => rental.product) ?? [];
 };
 
 export const getRentalsByRenterId = async (renterId: string) => {

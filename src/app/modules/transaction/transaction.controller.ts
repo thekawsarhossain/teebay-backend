@@ -18,7 +18,7 @@ export const buyProduct = async (productId: string, buyerId: string) => {
 };
 
 export const getBoughtProducts = async (userId: string) => {
-    return await prisma.transaction.findMany({
+    const transactionsWithProducts = await prisma.transaction.findMany({
         where: {
             buyerId: Number(userId),
             type: 'PURCHASE',
@@ -27,6 +27,8 @@ export const getBoughtProducts = async (userId: string) => {
             product: true,
         },
     });
+
+    return transactionsWithProducts?.map((transaction) => transaction.product) ?? [];
 };
 
 export const getTransactionsByBuyerId = async (buyerId: string) => {
