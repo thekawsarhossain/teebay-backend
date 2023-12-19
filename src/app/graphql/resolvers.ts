@@ -11,6 +11,14 @@ export const resolvers = {
             return await UserController.getUserById(id);
         },
 
+        getProduct: async (_parent: unknown, { id }: { id: string }) => {
+            return await ProductController.getProductById(id);
+        },
+
+        getUserProducts: async (_parent: unknown, { userId }: { userId: string }) => {
+            return await ProductController.getProductsByOwnerId(userId);
+        },
+
         getAllProducts: async () => {
             return await ProductController.getAllProducts();
         },

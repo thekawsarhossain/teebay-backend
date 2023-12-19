@@ -45,6 +45,8 @@ export const typeDefs = `#graphql
     type Query {
         getUser(id: ID!): User
         getAllProducts: [Product!]
+        getProduct(id: ID!): Product
+        getUserProducts(userId: ID!): [Product!]
         getBoughtProducts(userId: ID!): [Product!]
         getSoldProducts(userId: ID!): [Product!]
         getBorrowedProducts(userId: ID!): [Product!]
