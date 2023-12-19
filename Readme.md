@@ -27,3 +27,11 @@ Start the server:
 ```bash
   npm run start:dev
 ```
+
+### Environment Variables
+
+Make sure to set the following environment variables:
+
+- `PORT`: Port on which the server will run
+- `DATABASE_URL`: MongoDB connection string
+- `BCRYPT_SALT_ROUNDS`: Number of bcrypt salt rounds
