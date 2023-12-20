@@ -56,6 +56,10 @@ The GraphQL schema is defined in the `typeDefs.ts` file. It includes types for U
 
 The resolvers are defined in the `resolvers.ts` file. They determine how each field in the schema is resolved. This includes resolvers for fetching data (queries), modifying data (mutations), and fetching related data.
 
+### Postman Documentation
+
+(Postman documentation)[https://documenter.getpostman.com/view/21128063/2s9Ykq6zk7]
+
 ### Example Queries and Mutations
 
 Here are some example queries and mutations that you can use to interact with the API:
