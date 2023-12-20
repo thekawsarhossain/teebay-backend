@@ -21,7 +21,7 @@ export const rentProduct = async (productId: string, renterId: string, startTime
     });
 
     if (existingRentals.length > 0) {
-        throw new AppError(400, 'Product is already rented during the requested time');
+        throw new AppError(208, 'Product is already rented during the requested time');
     }
 
     return await prisma.rental.create({

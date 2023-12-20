@@ -16,18 +16,22 @@ app.use(express.json());
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 const schemaWithMiddleware = applyMiddleware(schema, handleErrors);
 
-app.use('/graphql', graphqlHTTP({
-    schema: schemaWithMiddleware,
-    graphiql: true,
-    customFormatErrorFn: (error: GraphQLError): GraphQLFormattedError => {
-        const parsedError = typeof error?.message === "string" && error?.message?.includes("errorSources") ? JSON.parse(error.message || "{}") : error
-        const formattedError: GraphQLFormattedError = {
-            message: error.message,
-            extensions: { ...(parsedError) },
-        };
-        return formattedError;
-    }
-}));
+app.use('/graphql', (req, res) => {
+    graphqlHTTP({
+        schema: schemaWithMiddleware,
+        graphiql: true,
+        customFormatErrorFn: (error: GraphQLError): GraphQLFormattedError => {
+            const parsedError = typeof error?.message === "string" && error?.message?.includes("errorSources") ? JSON.parse(error.message || "{}") : error
+            const formattedError: GraphQLFormattedError = {
+                message: error.message,
+                extensions: { ...(parsedError) },
+            };
+            res.status(parsedError?.statusCode || 500);
+            return formattedError;
+        }
+    })(req, res);
+});
+
 
 // Error handler
 app.use(notFound);

@@ -49,7 +49,6 @@ export const resolvers = {
         },
 
         addProduct: async (_parent: unknown, { product }: { product: IProduct }) => {
-            console.log("product", product)
             return await ProductController.addProduct({ ...product, ownerId: Number(product.ownerId) });
         },
         editProduct: async (_parent: unknown, { productId, product }: { productId: string, product: Partial<IProduct> }) => {

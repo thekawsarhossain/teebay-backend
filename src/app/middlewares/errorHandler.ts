@@ -25,7 +25,7 @@ export const handleErrors = async (resolve: TResolve, parent: unknown, args: unk
             errorSources = simplifiedError?.errorSources;
         } else if (err instanceof AppError) {
             statusCode = err?.statusCode;
-            message = err.message;
+            message = err?.message;
             errorSources = [
                 {
                     path: '',
