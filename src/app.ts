@@ -26,7 +26,7 @@ app.use('/graphql', (req, res) => {
                 message: error.message,
                 extensions: { ...(parsedError) },
             };
-            res.status(parsedError?.statusCode || 500);
+            res.status(200);
             return formattedError;
         }
     })(req, res);

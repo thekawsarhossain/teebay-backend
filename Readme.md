@@ -58,7 +58,7 @@ The resolvers are defined in the `resolvers.ts` file. They determine how each fi
 
 ### Example Queries and Mutations
 
-[![Postman Documentation](https://documenter.getpostman.com/view/21128063/2s9Ykq6zk7)]
+[Postman Documentation](https://documenter.getpostman.com/view/21128063/2s9Ykq6zk7)
 
 Here are some example queries and mutations that you can use to interact with the API:
 
