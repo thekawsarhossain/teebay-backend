@@ -32,14 +32,14 @@ enum TransactionType {
 }
 
 model User {
-  id          Int           @id @default(autoincrement())
-  firstName   String
-  lastName    String
-  address     String
-  email       String        @unique
-  phone       String
-  password    String
-  products    Product[]
+  id           Int           @id @default(autoincrement())
+  firstName    String
+  lastName     String
+  address      String
+  email        String        @unique
+  phone        String
+  password     String
+  products     Product[]
   transactions Transaction[]
   rentals      Rental[]
 }
@@ -56,7 +56,7 @@ model Product {
   ownerId      Int?
   createdAt    DateTime      @default(now())
   transactions Transaction[]
-  rentals       Rental[]
+  rentals      Rental[]
 }
 
 model Transaction {
@@ -64,7 +64,7 @@ model Transaction {
   buyer     User            @relation(fields: [buyerId], references: [id])
   buyerId   Int
   product   Product         @relation(fields: [productId], references: [id])
-  productId Int
+  productId Int             @unique
   type      TransactionType
   createdAt DateTime        @default(now())
 }
